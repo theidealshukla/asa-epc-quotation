@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Lock viewport to desktop width to force perfect A4 rendering on mobile devices -->
+<meta name="viewport" content="width=1024">
+<title>12,500 KWp DC Grid-Connected Ground Mount Turnkey Solar Project — ASA EPC</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --forest:#0B2818;
+  --forest-light:#15392250a;
+  --paper:#FAF8F3;
+  --amber:#E8A33D;
+  --amber-deep:#C97F1E;
+  --slate:#1C2620;
+  --sage:#E8EDE4;
+  --sage-line:#CFDBC8;
+  --green-line:#2D5A3D;
+  --muted:#6B7568;
+  --white:#FFFFFF;
+  --radius:14px;
+  --maxw:980px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter', sans-serif;
+  background:var(--paper);
+  color:var(--slate);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{
+  font-family:'Space Grotesk', sans-serif;
+}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+/* ===== NAV ===== */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(250,248,243,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--sage-line);
+}
+.nav-inner{
+  max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+}
+.nav-brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight:700; font-size:15px; letter-spacing:0.02em;
+}
+.nav-brand .dot{width:9px; height:9px; border-radius:50%; background:var(--amber);}
+.nav-logo{ height:50px; width:auto; display:block; }
+.footer-logo{ height:60px; width:auto; display:block; margin-bottom:10px; }
+
+/* Cover page — hidden on screen, shown as first PDF page only */
+.cover-page { display: none; }
+.nav-links{display:flex; gap:22px; font-size:13px; font-weight:600; color:var(--muted);}
+.nav-links a{text-decoration:none; transition:color .2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{
+  background:var(--forest); color:var(--paper); font-size:13px; font-weight:600;
+  padding:9px 18px; border-radius:30px; text-decoration:none; white-space:nowrap;
+}
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+.mobile-only { display: none; }
+.desktop-only { display: inline-flex; }
+
+/* ===== MOBILE SPECIFIC NAV ===== */
+.mobile-device .desktop-only { display: none !important; }
+.mobile-device .mobile-only { display: flex !important; }
+
+.mobile-device .nav-inner {
+  padding: 30px 28px; 
+}
+
+.mobile-device .hamburger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+.mobile-device .hamburger span {
+  display: block;
+  width: 55px;
+  height: 5px;
+  background: var(--forest);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+.mobile-device .hamburger.active span:nth-child(1) { transform: translateY(15px) rotate(45deg); }
+.mobile-device .hamburger.active span:nth-child(2) { opacity: 0; }
+.mobile-device .hamburger.active span:nth-child(3) { transform: translateY(-15px) rotate(-45deg); }
+
+.mobile-device .nav-links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(250,248,243,0.98);
+  flex-direction: column;
+  padding: 25px 48px 50px;
+  border-bottom: 2px solid var(--sage-line);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+}
+.mobile-device .nav-links.show {
+  display: flex !important;
+}
+.mobile-device .nav-links a {
+  padding: 35px 0;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  font-size: 38px;
+  color: var(--forest);
+}
+.mobile-device .nav-links a:last-child { border-bottom: none; }
+
+/* ===== HERO ===== */
+.hero{
+  position:relative; overflow:hidden;
+  background:radial-gradient(ellipse at 20% -10%, #1d4a30 0%, var(--forest) 55%, #06160d 100%);
+  color:var(--paper);
+  padding:90px 28px 120px;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 64px);
+  pointer-events:none;
+}
+.hero-inner{max-width:var(--maxw); margin:0 auto; position:relative; z-index:3;}
+
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hero-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 22, 13, 0.7);
+  z-index: 1;
+}
+.hero::before { z-index: 2; }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--amber); margin-bottom:28px;
+  position: relative; z-index: 3;
+}
+.eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--amber);}
+.hero h1{
+  font-size:clamp(34px, 5.4vw, 58px);
+  font-weight:700; line-height:1.08; letter-spacing:-0.01em;
+  max-width:780px;
+}
+.hero h1 em{font-style:normal; color:var(--amber);}
+.hero-sub{
+  margin-top:22px; font-size:17px; color:#C9D6C7; max-width:560px; font-weight:400;
+}
+.hero-meta{
+  margin-top:48px; display:flex; gap:48px; flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,0.14); padding-top:28px;
+}
+.hm-label{font-size:11.5px; text-transform:uppercase; letter-spacing:0.1em; color:#8FA590; margin-bottom:6px;}
+.hm-value{font-size:16px; font-weight:600; color:var(--paper);}
+
+.hero-stats{
+  margin-top:64px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:rgba(255,255,255,0.12); border-radius:var(--radius); overflow:hidden;
+}
+.hstat{background:rgba(255,255,255,0.045); padding:26px 22px;}
+.hstat .num{font-family:'Space Grotesk'; font-size:clamp(22px,3vw,30px); font-weight:700; color:var(--amber);}
+.hstat .lbl{font-size:12.5px; color:#AEC2AB; margin-top:6px; line-height:1.3;}
+@media (max-width:760px){ .hero-stats{grid-template-columns:repeat(2,1fr);} }
+
+/* ===== SECTION SHELL ===== */
+section{padding:78px 28px;}
+.section-head{margin-bottom:40px; max-width:680px;}
+.sec-num{
+  font-family:'Space Grotesk'; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:var(--forest);
+  letter-spacing:-0.01em; margin-bottom:6px; display:block; text-transform: uppercase;
+}
+.sec-num-lbl, .sec-num-text { display: inline; }
+.section-head h2{font-size:16px; font-weight:600; color:var(--slate); letter-spacing:0; margin-bottom:12px; font-family:'Inter', sans-serif;}
+.section-head p{margin-top:0px; color:var(--muted); font-size:15.5px;}
+
+@media (max-width:760px) {
+  .mobile-reorder-header, .section-head {
+    display: flex;
+    flex-direction: column;
+  }
+  .sec-num { order: 1; margin-bottom: 8px; }
+  .sec-heading, .section-head h2 {
+    order: 2;
+  }
+  .section-head p, p.lede {
+    order: 3;
+    font-size: 14.5px;
+    margin-top: 0 !important;
+  }
+}
+
+.alt{background:var(--sage);}
+
+/* ===== ABOUT / SUMMARY GRID ===== */
+.info-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;}
+@media (max-width:760px){ .info-grid{grid-template-columns:1fr;} }
+.lede{font-size:16.5px; color:var(--slate);}
+.lede strong{color:var(--forest);}
+.pillar-list{margin-top:26px; display:flex; flex-direction:column; gap:14px;}
+.pillar{display:flex; gap:14px; align-items:flex-start; font-size:14.5px;}
+.pillar .ic{
+  flex:0 0 30px; width:30px; height:30px; border-radius:9px;
+  background:var(--forest); color:var(--amber); display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; font-family:'Space Grotesk';
+}
+
+/* ===== ABOUT EXTENDED: WAAREE / VISION / MISSION / CORE VALUES ===== */
+
+/* Waaree Partnership Banner */
+.waaree-callout{
+  margin-top:32px;
+  background:linear-gradient(135deg, var(--forest) 0%, #1a4a2a 100%);
+  border-radius:14px; padding:20px 28px;
+  display:flex; align-items:center; gap:18px;
+  border-left:4px solid var(--amber);
+}
+.waaree-callout-icon{ font-size:30px; flex-shrink:0; }
+.waaree-callout-title{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700; font-size:15px; color:var(--amber); margin-bottom:4px;
+}
+.waaree-callout-sub{ font-size:13px; color:rgba(255,255,255,0.72); line-height:1.45; }
+
+/* Vision / Mission Grid */
+.vm-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:18px;
+  margin-top:28px;
+}
+@media (max-width:760px){ .vm-grid{grid-template-columns:1fr;} }
+
+.vm-card{
+  border-radius:14px; padding:28px 24px; position:relative; overflow:hidden;
+}
+.vm-card.vision{
+  background:var(--sage); border:1px solid var(--sage-line);
+}
+.vm-card.mission{
+  background:radial-gradient(ellipse at 80% 20%, #1a4a2a 0%, var(--forest) 65%);
+}
+
+.vm-card-label{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  margin-bottom:6px; display:flex; align-items:center; gap:8px;
+}
+.vm-card.vision .vm-card-label{ color:var(--amber-deep); }
+.vm-card.mission .vm-card-label{ color:var(--amber); }
+.vm-card-head{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:20px; font-weight:700; letter-spacing:-0.01em;
+  margin-bottom:8px;
+}
+.vm-card.vision .vm-card-head{ color:var(--forest); }
+.vm-card.mission .vm-card-head{ color:#fff; }
+.vm-card-text{ font-size:14.5px; line-height:1.72; margin:0; }
+.vm-card.vision .vm-card-text{ color:var(--slate); }
+.vm-card.mission .vm-card-text{ color:rgba(255,255,255,0.85); }
+
+/* Core Values strip */
+.core-values-wrap{ margin-top:28px; }
+.cv-strip-label{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+}
+.cv-strip-label::before, .cv-strip-label::after{
+  content:''; flex:1; height:1px; background:var(--sage-line);
+}
+.cv-strip{
+  display:grid; grid-template-columns:repeat(5,1fr); gap:8px;
+}
+@media (max-width:760px){ .cv-strip{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:480px){ .cv-strip{grid-template-columns:repeat(2,1fr);} }
+
+.cv-value{
+  background:var(--white); border:1px solid var(--sage-line); border-radius:8px;
+  padding:12px 10px; text-align:center;
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.cv-value:hover{
+  box-shadow:0 6px 22px rgba(11,40,24,0.10);
+  transform:translateY(-3px);
+  border-color:var(--amber-deep);
+}
+.cv-value-name{
+  font-size:12px; font-weight:700; color:var(--forest); line-height:1.2;
+}
+
+/* ===== ABOUT VIDEO ===== */
+/*
+ * iOS FIX — Three-layer defence:
+ * 1. Padding hack: forces real height on iOS < 16 (aspect-ratio alone collapses to 0)
+ * 2. @supports: switches to modern aspect-ratio only where supported (iOS 16+, modern Android)
+ * 3. -webkit-mask-image + translateZ(0): forces GPU compositing layer, defeating the
+ *    overflow:hidden + border-radius + CSS transform bug that erases videos on iOS Safari
+ */
+.about-video-wrap {
+  position: relative;         /* establishes stacking context for absolute child */
+  margin-top: 40px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--sage-line);
+  background: var(--slate);
+  /* ── Padding hack (primary): forces 16:9 height on all iOS versions ── */
+  padding-bottom: 56.25%;     /* 9/16 = 56.25% — the classic 16:9 ratio trick */
+  height: 0;
+  /* ── iOS compositing fix: video can vanish when combined with overflow:hidden + transform ── */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+/* ── Modern browsers: upgrade to aspect-ratio, reset the padding hack ── */
+@supports (aspect-ratio: 16 / 9) {
+  .about-video-wrap {
+    aspect-ratio: 16 / 9;
+    padding-bottom: 0;
+    height: auto;
+  }
+}
+.about-video-player {
+  /* Must be absolute to fill the padding-hack parent correctly on iOS */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ── CLIENTS & AFFILIATIONS ────────────────────────────── */
+.clients-image-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--sage-line);
+  background: white;
+}
+.clients-affiliations-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── EXECUTION METHODOLOGY — ILLUSTRATION PHASES ─────── */
+.em-phase {
+  border: 2px solid var(--amber);
+  border-radius: 12px;
+  padding: 20px 18px 18px;
+  margin-bottom: 28px;
+  background: #fff;
+}
+.em-phase-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+  border-bottom: 1.5px solid var(--sage-line);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.em-phase-tag {
+  background: var(--forest);
+  color: var(--amber);
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+/* Snake table */
+.em-snake { width: 100%; border-collapse: collapse; }
+.em-snake td { padding: 6px 4px; vertical-align: middle; }
+.em-sc { width: 29%; vertical-align: top !important; }
+.em-cc { width: 6.5%; text-align: center; }
+.em-tc { width: 18px; padding: 0 !important; }
+/* Step card */
+.em-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.em-badge {
+  position: absolute;
+  top: -9px;
+  right: 5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--amber);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--amber);
+  z-index: 2;
+  line-height: 1;
+}
+.em-art {
+  width: 100%;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid var(--sage-line);
+  line-height: 0;
+}
+.em-art svg, .em-art img { width: 100%; height: auto; display: block; object-fit: cover; }
+.em-lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--slate);
+  margin-top: 6px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.35;
+  width: 100%;
+}
+/* Arrow connector */
+.em-arr {
+  font-size: 20px;
+  color: var(--amber-deep, #C97F1E);
+  font-weight: 700;
+  user-select: none;
+}
+.em-arr.rev { color: var(--amber-deep, #C97F1E); }
+/* Corner turn (right-side, spans 2 rows) */
+.em-turn-r {
+  width: 10px;
+  height: 100%;
+  min-height: 60px;
+  border-right: 2px dashed #C97F1E;
+  border-bottom: 2px dashed #C97F1E;
+  border-radius: 0 0 8px 0;
+}
+/* Plain grid for Phase 4 */
+.em-plain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+
+.summary-card{
+  background:var(--white); border:1px solid var(--sage-line); border-radius:var(--radius);
+  padding:8px;
+}
+.summary-row{
+  display:flex; justify-content:space-between; gap:16px;
+  padding:14px 18px; border-bottom:1px solid var(--sage);
+  font-size:14px;
+}
+.summary-row:last-child{border-bottom:none;}
+.summary-row .k{color:var(--muted); font-weight:500;}
+.summary-row .v{font-weight:700; color:var(--forest); text-align:right;}
+.summary-card-head{
+  padding:14px 18px 4px; font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--amber-deep); font-weight:700;
+}
+
+/* ===== SPEC TABLE (card-based, not literal grid) ===== */
+.spec-list{display:flex; flex-direction:column; gap:10px;}
+.spec-item{
+  display:grid; grid-template-columns:42px 220px 1fr; gap:20px;
+  background:var(--white); border:1px solid var(--sage-line); border-radius:11px;
+  padding:18px 22px; align-items:start;
+}
+.spec-item .si-no{
+  font-family:'Space Grotesk'; font-weight:700; color:var(--amber-deep); font-size:15px;
+}
+.spec-item .si-item{font-weight:700; color:var(--forest); font-size:14.5px;}
+.spec-item .si-spec{color:var(--slate); font-size:14px;}
+@media (max-width:760px){
+  .spec-item{grid-template-columns:1fr; gap:6px;}
+  .spec-item .si-no{display:none;}
+}
+
+/* ===== VENDOR GRID ===== */
+.vendor-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+@media (max-width:760px){ .vendor-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:480px){ .vendor-grid{grid-template-columns:1fr;} }
+.vendor-card{
+  background:var(--white); border:1px solid var(--sage-line); border-radius:12px; padding:18px;
+}
+.vendor-card .vc-item{font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:0.03em;}
+.vendor-card .vc-make{font-size:15.5px; font-weight:700; color:var(--forest);}
+
+/* ===== SCOPE OF WORK ===== */
+.scope-block{margin-bottom:34px;}
+.scope-title{
+  font-size:13.5px; font-weight:700; color:var(--white); background:var(--forest);
+  display:inline-block; padding:7px 16px; border-radius:30px; margin-bottom:16px;
+}
+.scope-table{width:100%; border-collapse:collapse; background:var(--white); border-radius:11px; overflow:hidden; border:1px solid var(--sage-line);}
+.scope-table th{
+  background:var(--sage); color:var(--forest); font-size:12px; text-transform:uppercase; letter-spacing:0.05em;
+  text-align:left; padding:12px 16px; font-weight:700;
+}
+.scope-table td{padding:13px 16px; font-size:14px; border-top:1px solid var(--sage); color:var(--slate);}
+.scope-table td.center, .scope-table th.center{text-align:center;}
+.tick{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:6px; background:var(--green-line); color:var(--white);
+  font-size:12px; font-weight:700;
+}
+.dash{color:var(--muted);}
+.scope-table-wrap{overflow-x:auto;}
+
+/* ===== SCHEDULE / GANTT ===== */
+.gantt-wrap{overflow-x:auto; background:var(--white); border:1px solid var(--sage-line); border-radius:var(--radius); padding:4px;}
+.gantt{width:100%; border-collapse:collapse; min-width:760px;}
+.gantt th{
+  font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted);
+  padding:10px 8px; text-align:center; font-weight:700; border-bottom:2px solid var(--sage);
+}
+.gantt th.act-h{text-align:left; padding-left:14px;}
+.gantt td{padding:9px 8px; border-bottom:1px solid var(--sage); font-size:12.5px;}
+.gantt td.act{text-align:left; padding-left:14px; font-weight:600; color:var(--slate); white-space:nowrap; max-width:220px; overflow:hidden; text-overflow:ellipsis;}
+.gantt td.cell{padding:6px;}
+.gbar{height:18px; border-radius:4px; background:transparent;}
+.gbar.on{background:linear-gradient(135deg, var(--amber), var(--amber-deep));}
+.gantt tr:nth-child(even) td{background:rgba(232,237,228,0.45);}
+.phase-divider{border-left:2px solid var(--sage-line);}
+
+/* ===== WARRANTY ===== */
+.warranty-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+@media (max-width:760px){ .warranty-grid{grid-template-columns:1fr;} }
+.warranty-card{
+  background:var(--white); border:1px solid var(--sage-line); border-radius:var(--radius);
+  padding:24px;
+}
+.warranty-card .wc-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
+.warranty-card h4{font-size:16px; color:var(--forest); font-weight:700;}
+.wc-years{
+  font-family:'Space Grotesk'; font-weight:700; font-size:13px; color:var(--white);
+  background:var(--amber-deep); padding:5px 12px; border-radius:30px; white-space:nowrap;
+}
+.warranty-card p{font-size:13.5px; color:var(--muted);}
+
+/* ===== COMMERCIAL OFFER ===== */
+.commercial-table-wrap{overflow-x:auto; background:var(--white); border:1px solid var(--sage-line); border-radius:var(--radius);}
+.commercial-table{width:100%; border-collapse:collapse; min-width:760px;}
+.commercial-table th{
+  background:var(--forest); color:var(--paper); font-size:11.5px; text-transform:uppercase;
+  letter-spacing:0.04em; padding:13px 14px; text-align:left; font-weight:700;
+}
+.commercial-table th.num, .commercial-table td.num{text-align:right;}
+.commercial-table td{padding:12px 14px; font-size:13px; border-bottom:1px solid var(--sage); color:var(--slate);}
+.commercial-table tr:nth-child(even) td{background:rgba(232,237,228,0.5);}
+.commercial-table tr.sum td{font-weight:700; color:var(--forest); background:var(--sage); border-top:2px solid var(--sage-line);}
+.commercial-table tr.grand td{
+  font-weight:800; color:var(--white); background:var(--forest); font-size:14.5px;
+  border-top:2px solid var(--amber);
+}
+.commercial-table tr.grand td.num{color:var(--amber);}
+
+.total-banner{
+  margin-top:24px; display:flex; align-items:center; justify-content:space-between;
+  background:linear-gradient(120deg, var(--forest), #163a23); color:var(--paper);
+  padding:28px 32px; border-radius:var(--radius); flex-wrap:wrap; gap:18px;
+}
+.total-banner .tb-label{font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#A9C0A6;}
+.total-banner .tb-value{font-family:'Space Grotesk'; font-size:clamp(26px,4vw,38px); font-weight:700; color:var(--amber); margin-top:4px;}
+.total-banner .tb-sub{font-size:12.5px; color:#8FA590; margin-top:6px;}
+
+/* ===== EXECUTION / TIMELINE ===== */
+.exec-track{display:flex; flex-direction:column; gap:0;}
+.exec-step{
+  display:grid; grid-template-columns:50px 1fr; gap:18px; position:relative; padding-bottom:30px;
+}
+.exec-step:last-child{padding-bottom:0;}
+.exec-num{
+  width:36px; height:36px; border-radius:50%; background:var(--forest); color:var(--amber);
+  display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:13px;
+  position:relative; z-index:2;
+}
+.exec-step:not(:last-child)::before{
+  content:""; position:absolute; left:17px; top:36px; bottom:0; width:2px; background:var(--sage-line);
+}
+.exec-step h4{font-size:15.5px; color:var(--forest); font-weight:700; margin-bottom:4px;}
+.exec-step p{font-size:13.5px; color:var(--muted);}
+
+/* ===== CLIENTS ===== */
+.client-strip{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.client-chip{
+  background:var(--white); border:1px solid var(--sage-line); border-radius:30px;
+  padding:9px 18px; font-size:13.5px; font-weight:600; color:var(--forest);
+}
+
+/* ===== PROJECTS ===== */
+.proj-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+@media (max-width:760px){ .proj-grid{grid-template-columns:repeat(2,1fr);} }
+
+/* ── Plain card (fallback) ── */
+.proj-card{
+  background:var(--forest); border-radius:13px; padding:22px 18px; color:var(--paper); position:relative; overflow:hidden;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.proj-card::after{
+  content:""; position:absolute; right:-20px; top:-20px; width:90px; height:90px; border-radius:50%;
+  background:rgba(232,163,61,0.18);
+}
+.proj-card:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(11,40,24,0.28); }
+.proj-card .pc-mw{font-family:'Space Grotesk'; font-size:26px; font-weight:700; color:var(--amber); position:relative; z-index:1;}
+.proj-card .pc-loc{font-size:13.5px; color:#C9D6C7; margin-top:4px; position:relative; z-index:1;}
+
+/* ── Photo card variant ── */
+.proj-card-photo{
+  padding:0;                       /* image fills the card */
+  aspect-ratio:4/3;                /* consistent proportions across all 4 */
+  background:var(--forest);
+}
+.proj-card-photo::after{ display:none; } /* remove the decorative circle */
+
+.proj-photo{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  display:block;
+  border-radius:13px;
+  transition:transform 0.35s ease;
+}
+.proj-card-photo:hover .proj-photo{ transform:scale(1.04); }
+
+/* Gradient overlay — dark at bottom where text sits */
+.proj-overlay{
+  position:absolute; inset:0;
+  border-radius:13px;
+  background:linear-gradient(
+    to bottom,
+    rgba(6,22,13,0.08)   0%,
+    rgba(6,22,13,0.20)  40%,
+    rgba(6,22,13,0.78)  80%,
+    rgba(6,22,13,0.92) 100%
+  );
+  display:flex; flex-direction:column;
+  justify-content:flex-end;
+  padding:18px 18px 16px;
+  gap:2px;
+  z-index:2;
+}
+
+/* Amber MW badge */
+.pc-mw{
+  font-family:'Space Grotesk'; font-size:24px; font-weight:700;
+  color:var(--amber);
+  line-height:1.1;
+}
+
+/* White location name */
+.pc-loc{
+  font-size:15px; font-weight:700;
+  color:var(--white);
+  margin-top:2px;
+}
+
+/* Small type tag */
+.pc-tag{
+  font-size:11px; font-weight:600;
+  color:rgba(255,255,255,0.55);
+  text-transform:uppercase; letter-spacing:0.06em;
+  margin-top:4px;
+}
+
+/* Amber left-border accent at bottom of overlay */
+.proj-overlay::before{
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:3px; height:55%;
+  background:linear-gradient(to top, var(--amber), transparent);
+  border-radius:0 0 0 13px;
+}
+
+/* ===== ASA SERVICES — SINGLE FULL-WIDTH IMAGE ===== */
+.services-img-wrap{
+  width:100%;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--sage-line);
+  margin-top:8px;
+}
+.services-full-img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+/* ── Screen / Print swap helpers ── */
+/* PDF-only image: invisible on screen, swapped in by @media print below */
+.print-only { display: none; }
+
+/* ===== CLOSING / FOOTER ===== */
+.closing{
+  background:radial-gradient(ellipse at 80% 110%, #1d4a30 0%, var(--forest) 60%, #06160d 100%);
+  color:var(--paper); padding:80px 28px 50px;
+}
+.closing-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:48px;}
+@media (max-width:760px){ .closing-grid{grid-template-columns:1fr; gap:32px;} }
+.closing h3{font-size:22px; font-weight:700; margin-bottom:14px;}
+.closing-col-label{font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); margin-bottom:14px; font-weight:700;}
+.closing p, .closing a{font-size:14px; color:#C9D6C7; line-height:1.7; text-decoration:none;}
+.closing-bottom{
+  margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.12);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  font-size:12.5px; color:#7E9682;
+}
+
+.accept-bar{
+  position:sticky; bottom:0; z-index:40;
+  background:var(--forest); color:var(--paper);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 28px; gap:16px; flex-wrap:wrap;
+  box-shadow:0 -8px 24px rgba(0,0,0,0.18);
+}
+.accept-bar .ab-left{font-size:13.5px;}
+.accept-bar .ab-left strong{color:var(--amber); font-family:'Space Grotesk'; font-size:16px; display:block;}
+.accept-bar .ab-btn{
+  background:var(--amber); color:var(--forest); font-weight:700; font-size:13.5px;
+  padding:11px 24px; border-radius:30px; border:none; cursor:pointer; white-space:nowrap;
+}
+
+/* ===== MOBILE SPECIFIC ACCEPT BAR ===== */
+.mobile-device .accept-bar {
+  padding: 36px 48px;
+  box-shadow: 0 -16px 48px rgba(0,0,0,0.25);
+}
+.mobile-device .accept-bar .ab-left {
+  font-size: 32px;
+}
+.mobile-device .accept-bar .ab-left strong {
+  font-size: 42px;
+  margin-top: 8px;
+}
+.mobile-device .accept-bar .ab-btn {
+  font-size: 32px;
+  padding: 24px 48px;
+  border-radius: 60px;
+}
+
+/* ===== STYLED TABLES (Specs & Vendors) ===== */
+.styled-table-wrap {
+  width: 100%; overflow-x: auto; 
+  border: 1px solid var(--forest);
+}
+.styled-table {
+  width: 100%; border-collapse: collapse; min-width: 600px;
+  background: var(--white);
+}
+.styled-table th {
+  background-color: #33b266;
+  color: #111;
+  font-weight: 700; text-align: left;
+  padding: 14px 18px; border: 1px solid #111;
+}
+.styled-table td {
+  padding: 12px 18px; font-size: 14.5px;
+  border: 1px solid #111;
+  color: #111;
+}
+.styled-table td.center { text-align: center; font-weight: 600; width: 60px; }
+.styled-table tr:nth-child(odd) td {
+  background-color: #ffffff;
+}
+.styled-table tr:nth-child(even) td {
+  background-color: #38c772;
+}
+
+/* ===== MOBILE & COMPACT SPACE OPTIMIZATION ===== */
+@media (max-width: 760px) {
+  section { padding: 40px 16px; }
+  .wrap { padding: 0 16px; }
+  .hero { padding: 50px 16px 60px; }
+  .hero h1 { font-size: 32px; }
+  .hero-meta { gap: 20px; padding-top: 20px; margin-top: 30px; }
+  .info-grid { gap: 32px; }
+  .section-head { margin-bottom: 24px; }
+  .closing { padding: 40px 16px 30px; }
+  .closing-grid { gap: 24px; }
+  .total-banner { padding: 20px; }
+  
+  /* Gantt mobile optimization */
+  .gantt-wrap { padding: 0; border: none; overflow-x: visible; }
+  .gantt { min-width: 100%; }
+  .gantt th, .gantt td { padding: 6px 4px; font-size: 10.5px; }
+  .gantt th.act-h, .gantt td.act { padding-left: 2px; max-width: 90px; white-space: normal; line-height: 1.2; }
+  .gantt th[colspan="2"] { font-size: 10px; letter-spacing: 0; }
+  
+  /* Commercial table mobile optimization */
+  .commercial-table-wrap { overflow-x: auto; }
+  .commercial-table { min-width: 500px; font-size: 12px; }
+  .commercial-table th, .commercial-table td { padding: 8px 6px; }
+}
+
+/* ===== PRINT / PDF OPTIMIZATION ===== */
+@media print {
+  @page { size: A4; margin: 0; }
+
+  /* ── Base reset ── */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    background: white;
+    font-size: 10pt;
+    color: #111;
+    margin: 0 auto !important;
+    padding: 0;
+  }
+
+  /* ── Hide screen chrome & hero — replaced by .cover-page ── */
+  .nav, .accept-bar { display: none !important; }
+
+  /* ── Hero: fully collapse to zero so mobile browsers don't allocate a phantom page.
+     display:none alone is not enough on Chrome Android / Safari iOS — the browser
+     still measures the element before applying display:none and can insert a blank
+     page between the cover and the first section. Using position:absolute + height:0
+     + overflow:hidden guarantees zero layout contribution regardless of browser. ── */
+  .hero {
+    display: block !important;     /* keep in flow so position:absolute works */
+    position: absolute !important; /* remove from normal flow completely */
+    top: 0 !important;
+    left: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* ── Force all scroll-reveal elements visible ── */
+  .reveal, .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 296mm;
+    box-sizing: border-box;
+    page-break-after: always;
+    break-after: page;
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: hidden;
+  }
+
+  /* Top white header band — logo + credentials */
+  .cv-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: white;
+    border-bottom: 3px solid #0B2818;
+    flex-shrink: 0;
+  }
+  .cv-logo { height: 70px; width: auto; display: block; }
+  .cv-top-right { text-align: right; }
+  .cv-company-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    color: #0B2818;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .cv-credentials {
+    font-size: 7.5pt;
+    color: #6B7568;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Dark green main section — compact (~38% of page height) */
+  .cv-main {
+    flex: 0 0 38%;
+    background: #0B2818;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 28px;
+    position: relative;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* Decorative circles */
+  .cv-main::before {
+    content: '';
+    position: absolute;
+    top: -70px; right: -70px;
+    width: 260px; height: 260px;
+    border: 40px solid rgba(232, 163, 61, 0.12);
+    border-radius: 50%;
+  }
+  .cv-main::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 180px; height: 180px;
+    border: 28px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .cv-eyebrow {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #E8A33D;
+    margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  .cv-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    max-width: 88%;
+    margin: 0 0 20px 0;
+    position: relative; z-index: 1;
+  }
+  .cv-title em { color: #E8A33D; font-style: normal; }
+  .cv-divider {
+    width: 60px; height: 3px;
+    background: #E8A33D;
+    margin-bottom: 16px;
+    border-radius: 2px;
+    position: relative; z-index: 1;
+  }
+  .cv-subtitle {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.65);
+    max-width: 75%;
+    line-height: 1.6;
+    position: relative; z-index: 1;
+  }
+
+  /* Bottom white section — tight, top-aligned, no excess whitespace */
+  .cv-bottom {
+    flex: 0 0 auto;
+    background: white;
+    padding: 20px 20px 16px;
+    border-top: 5px solid #E8A33D;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .cv-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid #CFDBC8;
+  }
+  .cv-meta-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 14px;
+    border-left: 3px solid #E8A33D;
+    background: #FAFDF8;
+    border-radius: 0 6px 6px 0;
+  }
+  .cv-meta-icon {
+    display: none;
+  }
+  .cv-meta-label {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B7568;
+    margin-bottom: 4px;
+  }
+  .cv-meta-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0B2818;
+    line-height: 1.2;
+  }
+  .cv-divider-line {
+    display: none;
+  }
+  .cv-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .cv-stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 12px;
+    border-right: 1px solid #CFDBC8;
+  }
+  .cv-stat-item:last-child { border-right: none; }
+  .cv-stat-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0B2818;
+    line-height: 1.1;
+  }
+  .cv-stat-lbl {
+    display: block;
+    font-size: 7.5pt;
+    color: #6B7568;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  /* Compact About Us Section for Print */
+  #about .wrap { padding: 8mm 7.5mm; }
+  #about .lede { font-size: 14.5px; margin-bottom: 8px; }
+  #about h2 { font-size: 20px; margin-bottom: 8px; }
+  #about .pillar-list { margin-top: 10px; gap: 8px; }
+  #about .waaree-callout { margin-top: 16px; padding: 12px 18px; }
+  #about .vm-grid { margin-top: 16px; gap: 12px; grid-template-columns: 1fr 1fr !important; display: grid !important; }
+  #about .vm-card { padding: 16px 18px; }
+  #about .vm-card-text { font-size: 12.5px; line-height: 1.5; }
+  #about .core-values-wrap { margin-top: 16px; }
+  #about .cv-strip { grid-template-columns: repeat(5, 1fr) !important; display: grid !important; }
+  #about .cv-value { padding: 10px 8px; }
+
+  /* Cover page meta items — ensure background colours print */
+  .cv-meta-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #FAFDF8 !important; border-left: 3px solid #E8A33D !important; }
+
+  /* Clients & Affiliations composite image — print */
+  .clients-image-wrap { border: none; border-radius: 0; }
+  .clients-affiliations-img { width: 100%; height: auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Exec Methodology — single image */
+  #execution {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 8mm 7.5mm !important;
+  }
+  .phase-img-wrap {
+    border: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    max-height: 220mm;
+    overflow: hidden;
+  }
+  .phase-img {
+    width: 100%;
+    max-height: 235mm;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: top left;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+
+  /* ══ SECTION PAGE BREAKS ══
+     Every <section> starts on a fresh page.
+     break-inside is set to AUTO so that long sections (commercial table, execution
+     methodology) can flow across pages naturally. Only short sections get avoid.
+  */
+  section {
+    padding: 10mm 7.5mm;
+    background: transparent !important;
+    page-break-before: always;
+    break-before: page;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  /* The first section (#about) immediately follows the hidden hero.
+     On mobile, giving it page-break-before:always after a zero-height element
+     can still trigger a blank page. Override it to avoid. */
+  section:first-of-type,
+  #about {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+  }
+  footer {
+    page-break-before: always;
+    break-before: page;
+  }
+  .alt { background: transparent !important; }
+
+  /* ══ CLIENTS & AFFILIATIONS — FIT ENTIRE SECTION ON ONE PAGE ══
+
+     ROOT CAUSE of the blank page:
+       break-inside:avoid on a container taller than one A4 page is *ignored*
+       by browsers — they still break it, usually right after the heading,
+       which is why OUR NETWORK heading appeared alone on one page.
+
+     FIX: Constrain the image so the whole section (heading ~30mm + padding ~20mm)
+     always fits within one 297mm A4 page. Max usable height ≈ 247mm.
+     The image scales down via max-height + object-fit:contain.
+  */
+  #clients-network {
+    /* Force one-page: padding + heading + image must all fit */
+    page-break-inside: avoid;
+    break-inside: avoid;
+    /* Tight padding so the image has maximum room */
+    padding: 8mm 7.5mm !important;
+  }
+  .clients-image-wrap {
+    border: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    /* The wrap clips the image to the remaining page height */
+    max-height: 220mm;
+    overflow: hidden;
+  }
+  .clients-affiliations-img {
+    width: 100%;
+    /* Hard cap: heading ≈ 24mm + padding 16mm + section-num 8mm = 48mm used.
+       Remaining on A4 (297mm) ≈ 249mm. Keep a 10mm safety margin → 239mm. */
+    max-height: 235mm;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: top left;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ══ COMMERCIAL OFFER ══
+
+     ROOT CAUSE of the split banner:
+       The <section> break-inside:avoid was conflicting with a table that
+       is longer than one page — the browser ignored the avoid and picked
+       the worst split point (right before the banner).
+
+     FIX: Allow the table to paginate freely (break-inside:auto on the section
+     handles this now). Only the three summary rows (Total / GST / Grand Total)
+     and the .total-banner are locked together with break-before:avoid.
+
+     Additionally, we print the section heading in a compact chip so it takes
+     minimal vertical space and leaves maximum room for the table.
+  */
+  #commercial {
+    padding: 8mm 7.5mm !important;
+  }
+  .commercial-table-wrap {
+    border: 1px solid #ccc;
+    overflow: visible !important;
+    page-break-inside: auto;  /* rows CAN span pages */
+  }
+  .commercial-table {
+    min-width: 100%;
+    font-size: 9pt;    /* slightly tighter so fewer rows need to paginate */
+  }
+  .commercial-table th {
+    padding: 8px 10px !important;
+    font-size: 8pt !important;
+  }
+  .commercial-table td {
+    padding: 7px 10px !important;
+    font-size: 9pt !important;
+  }
+  /* Summary block — Total + GST + Grand Total must never split */
+  .commercial-table tr.sum:first-of-type {
+    page-break-before: auto;  /* start of the summary group can move to next page */
+    break-before: auto;
+  }
+  .commercial-table tr.sum,
+  .commercial-table tr.grand {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-before: avoid;  /* keeps GST row after Total row, Grand after GST */
+    break-before: avoid;
+  }
+  /* .total-banner must immediately follow the table — no page break between them */
+  .total-banner {
+    background: #0B2818 !important;
+    color: #fff !important;
+    border: none;
+    padding: 12px 16px;
+    margin-top: 8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  .total-banner .tb-value { color: #E8A33D !important; font-size: 18pt !important; }
+  .total-banner .tb-label { color: rgba(255,255,255,0.7) !important; font-size: 8pt !important; }
+  .total-banner .tb-sub   { color: rgba(255,255,255,0.55) !important; font-size: 8pt !important; }
+
+  /* ══ GANTT ══ */
+  .gantt-wrap { border: 1px solid #ccc; overflow: visible !important; }
+  .gantt { min-width: 100%; }
+
+  /* ══ SCOPE TABLE PRINT COLOURS ══ */
+  .scope-table th { background: #f0f0f0 !important; color: #111 !important; }
+  .scope-title { background: #eee !important; color: #111 !important; border: 1px solid #ccc; padding: 4px 10px; }
+
+  /* ══ FOOTER ══ */
+  .closing { background: transparent !important; color: #111; padding: 15px 0; }
+  .closing p, .closing a, .closing-col-label, .closing-bottom { color: #444; }
+
+  /* ══ SERVICES IMAGE — PRINT ══ */
+  /* Swap: hide the screen image, show the PDF-specific image */
+  .screen-only { display: none !important; }
+  .print-only  { display: block !important; }
+
+  #asa-services {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 8mm 7.5mm !important;
+  }
+  .services-img-wrap {
+    border: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    max-height: 220mm;
+    overflow: hidden;
+  }
+  .services-full-img {
+    width: 100%;
+    max-height: 235mm;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: top left;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ══ PROJECT PHOTO CARDS — PRINT ══ */
+  .proj-card-photo {
+    aspect-ratio: 4/3;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .proj-photo {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .proj-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(6,22,13,0.05)  0%,
+      rgba(6,22,13,0.65) 70%,
+      rgba(6,22,13,0.88) 100%
+    ) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .pc-mw { color: #E8A33D !important; font-size: 18pt !important; }
+  .pc-loc { color: #fff !important; font-size: 12pt !important; }
+  .pc-tag { color: rgba(255,255,255,0.65) !important; font-size: 7.5pt !important; }
+
+  /* ══ GENERAL ANTI-ORPHAN RULES ══ */
+  .summary-card, .spec-item, .vendor-card, .warranty-card,
+  .proj-card, .exec-step, .scope-block, .hero-meta, .service-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  h2, h3, h4, .section-head, .scope-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+
+
+  /* ══ ABOUT SECTION COMPACT ══ */
+  #about .wrap { padding: 8mm 7.5mm; }
+  #about .lede { font-size: 14.5px; margin-bottom: 8px; }
+  #about h2 { font-size: 20px; margin-bottom: 8px; }
+  #about .pillar-list { margin-top: 10px; gap: 8px; }
+  #about .waaree-callout { margin-top: 16px; padding: 12px 18px; }
+  #about .vm-grid { margin-top: 16px; gap: 12px; grid-template-columns: 1fr 1fr !important; display: grid !important; }
+  #about .vm-card { padding: 16px 18px; }
+  #about .vm-card-text { font-size: 12.5px; line-height: 1.5; }
+  #about .core-values-wrap { margin-top: 16px; }
+  #about .cv-strip { grid-template-columns: repeat(5, 1fr) !important; display: grid !important; }
+  #about .cv-value { padding: 10px 8px; }
+
+  /* ══ MISC ══ */
+  .cv-meta-item { background: #FAFDF8 !important; border-left: 3px solid #E8A33D !important; }
+  .footer-logo { height: 36px; }
+  .spec-item { padding: 10px 15px; }
+  .info-grid { grid-template-columns: 1.1fr 1fr !important; gap: 20px; }
+  .exec-step { padding-bottom: 15px; }
+  .styled-table-wrap { overflow: visible !important; }
+}
+
+
+/* ── Screen reveal animation ── */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
+
+
+</style>
+</head>
+<body>
+
+<!-- ══ PRINT COVER PAGE (hidden on screen, first PDF page) ══ -->
+<div class="cover-page">
+  <div class="cv-top">
+    <img src="https://asa-epc.com/logos/asa-epc-logo.png" alt="ASA EPC Pvt. Ltd." class="cv-logo">
+    <div class="cv-top-right">
+      <div class="cv-company-name">ASA EPC Pvt. Ltd.</div>
+      <div class="cv-credentials">DPIIT Recognised &nbsp;·&nbsp; Waaree Energy Franchise Partner &nbsp;·&nbsp; 9 Years of Solar Excellence</div>
+    </div>
+  </div>
+  <div class="cv-main">
+    <div class="cv-eyebrow">Open Access · KUSUM Solar Proposal</div>
+    <h1 class="cv-title">12,500 KWp DC Grid-Connected Ground Mount Turnkey Solar Project</h1>
+    <div class="cv-divider"></div>
+    <p class="cv-subtitle">A techno-commercial offer prepared for demo 2 — Bawadiya Kala, Bhopal, MP, built on nine years of solar EPC delivery and a Waaree Energy partnership.</p>
+  </div>
+  <div class="cv-bottom">
+    <div class="cv-meta-grid">
+      <div class="cv-meta-item">
+        <div class="cv-meta-label">Prepared For</div>
+        <div class="cv-meta-value">demo 2</div>
+      </div>
+      <div class="cv-meta-item">
+        <div class="cv-meta-label">Site Location</div>
+        <div class="cv-meta-value">Bawadiya Kala, Bhopal, MP</div>
+      </div>
+      <div class="cv-meta-item">
+        <div class="cv-meta-label">Offer Date</div>
+        <div class="cv-meta-value">06 April 2027</div>
+      </div>
+      <div class="cv-meta-item">
+        <div class="cv-meta-label">Project Scheme</div>
+        <div class="cv-meta-value">PM-KUSUM</div>
+      </div>
+    </div>
+    <div class="cv-divider-line"></div>
+    <div class="cv-stats-strip">
+      <div class="cv-stat-item">
+        <span class="cv-stat-num">9 yrs</span>
+        <span class="cv-stat-lbl">Industry experience</span>
+      </div>
+      <div class="cv-stat-item">
+        <span class="cv-stat-num">100+ MW</span>
+        <span class="cv-stat-lbl">EPC projects commissioned</span>
+      </div>
+      <div class="cv-stat-item">
+        <span class="cv-stat-num">200+</span>
+        <span class="cv-stat-lbl">Projects in pipeline</span>
+      </div>
+      <div class="cv-stat-item">
+        <span class="cv-stat-num">2</span>
+        <span class="cv-stat-lbl">Country presence</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><img src="https://asa-epc.com/logos/asa-epc-logo.png" alt="ASA EPC Pvt. Ltd." class="nav-logo"></div>
+    <div class="nav-links" id="nav-links">
+      <a href="#summary">Summary</a>
+      <a href="#specification">Specification</a>
+      <a href="#scope">Scope</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#commercial">Commercial</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-cta desktop-only" href="#commercial">View Pricing</a>
+      <button class="hamburger mobile-only" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO (STATIC) ═══════════════════ -->
+<header class="hero">
+  <div class="hero-video-wrap screen-only">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      poster="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto/sbtpuv8x8mltwxf3xlw0.jpg"
+      class="hero-video-player"
+    >
+      <source src="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto,f_mp4/sbtpuv8x8mltwxf3xlw0.mp4" type="video/mp4">
+      <source src="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto,f_webm/sbtpuv8x8mltwxf3xlw0.webm" type="video/webm">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow">Open Access · KUSUM Solar Proposal</span>
+    <h1>12,500 KWp DC Grid-Connected Ground Mount Turnkey Solar Project</h1>
+    <p class="hero-sub">A techno-commercial offer prepared for demo 2 — Bawadiya Kala, Bhopal, MP, built on nine years of solar EPC delivery and a Waaree Energy partnership.</p>
+
+    <div class="hero-meta">
+      <div><div class="hm-label">Prepared For</div><div class="hm-value">demo 2</div></div>
+      <div><div class="hm-label">Site</div><div class="hm-value">Bawadiya Kala, Bhopal, MP</div></div>
+      <div><div class="hm-label">Offer Date</div><div class="hm-value">06 April 2027</div></div>
+      <div><div class="hm-label">Scheme</div><div class="hm-value">KUSUM</div></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat"><div class="num">9 yrs</div><div class="lbl">Industry experience</div></div>
+      <div class="hstat"><div class="num">100+ MW</div><div class="lbl">EPC projects commissioned</div></div>
+      <div class="hstat"><div class="num">200+</div><div class="lbl">Projects in pipeline</div></div>
+      <div class="hstat"><div class="num">2</div><div class="lbl">Country presence</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════ ABOUT ASA EPC (FIXED — DO NOT CHANGE) ═══════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="mobile-reorder-header">
+        <div class="sec-num"><span class="sec-num-text">ABOUT ASA EPC</span></div>
+        <h2 class="sec-heading">Concept to commissioning, under one roof.</h2>
+        <p class="lede">ASA EPC PVT LTD is a <strong>DPIIT-recognised</strong> renewable energy company delivering residential, commercial, and industrial solar systems, IPP, asset management, and power transmission. As a <strong>franchise partner of Waaree Energy</strong> — India's largest vertically integrated energy company — every project draws on a supply chain built for scale and reliability.</p>
+      </div>
+      <div class="pillar-list">
+        <div class="pillar"><div class="ic">E</div><div><strong>Engineering</strong><br><span style="color:var(--muted)">Site assessment, system design, layout planning</span></div></div>
+        <div class="pillar"><div class="ic">P</div><div><strong>Procurement</strong><br><span style="color:var(--muted)">Tier-1 components sourced at scale</span></div></div>
+        <div class="pillar"><div class="ic">C</div><div><strong>Construction</strong><br><span style="color:var(--muted)">Installation, testing, and commissioning</span></div></div>
+        <div class="pillar"><div class="ic">A</div><div><strong>Asset Mgmt</strong><br><span style="color:var(--muted)">Automation, repair, spare-part replacement</span></div></div>
+      </div>
+    </div>
+
+    <!-- Waaree Partnership -->
+    <div class="waaree-callout">
+      <span class="waaree-callout-icon">⚡</span>
+      <div>
+        <div class="waaree-callout-title">Partner with India's No.1 Solar Panel Manufacturer — Waaree Energy Ltd.</div>
+        <div class="waaree-callout-sub">India's Largest Vertically Integrated Energy Company with Global Operations · Franchise Partner for Bhopal &amp; Central India</div>
+      </div>
+    </div>
+
+    <!-- Vision / Mission -->
+    <div class="vm-grid">
+      <div class="vm-card vision">
+        <div class="vm-card-label">Our Vision</div>
+        <div class="vm-card-head">Vision</div>
+        <p class="vm-card-text">"Delivering Exceptional, Economical, and Eco-Friendly Energy Solutions. We provide top-tier, cost-efficient sustainable energy solutions, fostering a greener future for generations."</p>
+      </div>
+      <div class="vm-card mission">
+        <div class="vm-card-label">Our Mission</div>
+        <div class="vm-card-head">Mission</div>
+        <p class="vm-card-text">"Revolutionizing global energy with cutting-edge, high-quality, and affordable solar solutions for a sustainable future, empowering energy independence worldwide instantly."</p>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <div class="core-values-wrap">
+      <div class="cv-strip-label">Core Values</div>
+      <div class="cv-strip">
+        <div class="cv-value">
+          <div class="cv-value-name">Integrity</div>
+        </div>
+        <div class="cv-value">
+          <div class="cv-value-name">Respect for Individuals</div>
+        </div>
+        <div class="cv-value">
+          <div class="cv-value-name">Customer First</div>
+        </div>
+        <div class="cv-value">
+          <div class="cv-value-name">Passion for Excellence</div>
+        </div>
+        <div class="cv-value">
+          <div class="cv-value-name">Continuous Improvements &amp; Innovation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About ASA EPC Video -->
+    <div class="about-video-wrap screen-only reveal">
+      <video
+        controls
+        playsinline
+        webkit-playsinline
+        x-webkit-airplay="allow"
+        preload="metadata"
+        poster="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto/sbtpuv8x8mltwxf3xlw0.jpg"
+        class="about-video-player"
+      >
+        <source src="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto,f_mp4/sbtpuv8x8mltwxf3xlw0.mp4" type="video/mp4">
+        <source src="https://res.cloudinary.com/dfj3pc8qy/video/upload/q_auto,f_webm/sbtpuv8x8mltwxf3xlw0.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CLIENTS & AFFILIATIONS ================= -->
+<section id="clients-network">
+  <div class="wrap">
+    <div class="mobile-reorder-header" style="margin-bottom:24px;">
+      <div class="sec-num"><span class="sec-num-text">OUR NETWORK</span></div>
+      <h2 class="sec-heading">Valuable Clients &amp; Affiliations</h2>
+    </div>
+    <div class="clients-image-wrap">
+      <img src="https://asa-epc.com/clients-affiliations.png" alt="Valuable Clients and Banking Affiliations" class="clients-affiliations-img" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 01 — PROJECT SUMMARY (DYNAMIC) ═══════════════════ -->
+<section id="summary" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">01 —</span> <span class="sec-num-text">PROJECT SUMMARY</span></div>
+      <h2 class="sec-heading">The plant, at a glance.</h2>
+      <p>Key technical parameters for the proposed on-grid, ground-mounted system.</p>
+    </div>
+    <div class="info-grid">
+      <div class="summary-card">
+        <div class="summary-card-head">Site &amp; System</div>
+        <div class="summary-row"><span class="k">Location</span><span class="v">Bawadiya Kala, Bhopal, MP</span></div>
+<div class="summary-row"><span class="k">Plant capacity</span><span class="v">12.50 MWp</span></div>
+<div class="summary-row"><span class="k">Module technology</span><span class="v">TOPCon 625 Wp</span></div>
+<div class="summary-row"><span class="k">Area required</span><span class="v">30 acres</span></div>
+<div class="summary-row"><span class="k">Mounting structure</span><span class="v">Seasonal tilt</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-head">Scheme &amp; Contact</div>
+        <div class="summary-row"><span class="k">Project scheme</span><span class="v">PM-KUSUM</span></div>
+<div class="summary-row"><span class="k">Finance options</span><span class="v">SBI Agri · SBI MSME · Canara · AU</span></div>
+<div class="summary-row"><span class="k">Developer contact</span><span class="v">Ashutosh Pandey</span></div>
+<div class="summary-row"><span class="k">Offer date</span><span class="v">06 April 2027</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 02 — TECHNICAL SPECIFICATION (DYNAMIC) ═══════════════════ -->
+<section id="specification">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">02 —</span> <span class="sec-num-text">TECHNICAL SPECIFICATION</span></div>
+      <h2 class="sec-heading">What's going into the ground.</h2>
+      <p>Component-level specification for the project.</p>
+    </div>
+    <div class="styled-table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Item</th>
+            <th>Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="center">1</td><td>Solar PV Modules</td><td>P max ≥ 615 Wp, N-Type Bi-Facial</td></tr>
+<tr><td class="center">2</td><td>Mounting Structures</td><td>Seasonal tilt 5–20°, HDGI (for RCC) + Galvanum, min. 500mm clearance</td></tr>
+<tr><td class="center">3</td><td>Inverter</td><td>Outdoor string inverter, min. 98% efficiency (SG320HX20), multi-rated 300–352 KVA</td></tr>
+<tr><td class="center">4</td><td>Combiner Boxes</td><td>Dust / water-proof with applicable protection features</td></tr>
+<tr><td class="center">5</td><td>DC Solar Cables</td><td>Solar grade, halogen-free, UV & weather resistant</td></tr>
+<tr><td class="center">6</td><td>AC LT Cables</td><td>3-core aluminium XLPE insulated, galvanised steel armoured</td></tr>
+<tr><td class="center">7</td><td>Earthing System</td><td>Chemical, maintenance-free type</td></tr>
+<tr><td class="center">8</td><td>Lightning Arrestor</td><td>ESE type, 120m radius coverage, per industry standards</td></tr>
+<tr><td class="center">9</td><td>ACDB</td><td>Dust-proof, over-current and surge protection, IP65</td></tr>
+<tr><td class="center">10</td><td>Remote Monitoring</td><td>Web-based, with data logger & SCADA system</td></tr>
+<tr><td class="center">11</td><td>Substation & Yard</td><td>800/33KV pulling substation, 10MVA transformer, breaker, isolator, metering unit</td></tr>
+<tr><td class="center">12</td><td>Transmission Line</td><td>33KV overhead, 'H'-beam 13m structure, Dog conductor</td></tr>
+<tr><td class="center">13</td><td>Injection Bay & Metering</td><td>33KV injection bay at HT side of substation, with metering unit</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 03 — EQUIPMENT & VENDORS (DYNAMIC) ═══════════════════ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">03 —</span> <span class="sec-num-text">EQUIPMENT & VENDORS</span></div>
+      <h2 class="sec-heading">Built on names you already trust.</h2>
+      <p>Major equipment categories and the proposed manufacturer for each.</p>
+    </div>
+    <div class="styled-table-wrap">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Item</th>
+            <th>Offered Makes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="center">1</td><td>Solar PV Modules</td><td>Waaree</td></tr>
+<tr><td class="center">2</td><td>Mounting Structures</td><td>Tata / JSW</td></tr>
+<tr><td class="center">3</td><td>String Inverter</td><td>Sungrow</td></tr>
+<tr><td class="center">4</td><td>DC Solar Cables</td><td>Polycab</td></tr>
+<tr><td class="center">5</td><td>AC Cables</td><td>Polycab</td></tr>
+<tr><td class="center">6</td><td>Earthing System</td><td>Per DISCOM guidelines</td></tr>
+<tr><td class="center">7</td><td>Lightning Arrestor</td><td>Powertech / Jeftechno</td></tr>
+<tr><td class="center">8</td><td>MCB / MCCB</td><td>Schneider</td></tr>
+<tr><td class="center">9</td><td>Weather Station</td><td>Kipp & Zonen / Davis</td></tr>
+<tr><td class="center">10</td><td>ACDB</td><td>Locally manufactured, IP65</td></tr>
+<tr><td class="center">11</td><td>MC4 Connectors</td><td>Waaree / Phoenix / Elmex</td></tr>
+<tr><td class="center">12</td><td>Miscellaneous</td><td>Standard make</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 04 — SCOPE OF WORK (DYNAMIC) ═══════════════════ -->
+<section id="scope">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">04 —</span> <span class="sec-num-text">SCOPE OF WORK</span></div>
+      <h2 class="sec-heading">Who does what, on paper.</h2>
+      <p>Responsibility split across clearances, site preparation, and DC/AC side delivery.</p>
+    </div>
+    
+    <div class="scope-block">
+      <span class="scope-title">Clearances & Approvals</span>
+      <div class="scope-table-wrap">
+        <table class="scope-table">
+          <thead><tr><th>Approval / Clearance</th><th class="center">EPC</th><th class="center">Owner</th></tr></thead>
+          <tbody>
+            <tr><td>CEIG & MPPTCL approval</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Third-party inspection & testing</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Completion certificate from nodal agencies</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Liaison for meter approval</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="scope-block">
+      <span class="scope-title">Site Preparation</span>
+      <div class="scope-table-wrap">
+        <table class="scope-table">
+          <thead><tr><th>Activity</th><th class="center">EPC</th><th class="center">Owner</th></tr></thead>
+          <tbody>
+            <tr><td>Construction power</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Construction water</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Power plant design & layout</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="dash">—</span></td></tr>
+<tr><td>Access of site</td><td class="center"><span class="dash">—</span></td><td class="center"><span class="tick">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="scope-block">
+      <span class="scope-title">DC Side</span>
+      <div class="scope-table-wrap">
+        <table class="scope-table">
+          <thead><tr><th>Item</th><th class="center">Supply</th><th class="center">E&C</th></tr></thead>
+          <tbody>
+            <tr><td>Solar panels</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>MMS — seasonal tilt</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>DC cables</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>DC side earthing</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>Weather monitoring system</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>Lightning arrestor</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="scope-block" style="margin-bottom:0;">
+      <span class="scope-title">AC Side</span>
+      <div class="scope-table-wrap">
+        <table class="scope-table">
+          <thead><tr><th>Item</th><th class="center">Supply</th><th class="center">E&C</th></tr></thead>
+          <tbody>
+            <tr><td>Inverter</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>LT cables</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>AC distribution board</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>AC side earthing</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+<tr><td>Control & communication cables</td><td class="center"><span class="tick">✓</span></td><td class="center"><span class="tick">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 05 — PROJECT SCHEDULE (DYNAMIC) ═══════════════════ -->
+<section id="schedule" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">05 —</span> <span class="sec-num-text">PROJECT SCHEDULE</span></div>
+      <h2 class="sec-heading">120 days, start to handover.</h2>
+      <p>Three 40-day phases covering mobilisation, installation, and commissioning.</p>
+    </div>
+    <div class="gantt-wrap">
+      <table class="gantt">
+        <thead>
+          <tr>
+            <th class="act-h">Activity</th>
+            <th colspan="2">Phase 1 · 40 days</th>
+            <th colspan="2">Phase 2 · 40 days</th>
+            <th colspan="2">Phase 3 · 40 days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="act">Solar Power Plant</td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td></tr>
+<tr><td class="act">NTP</td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Site Mobilisation</td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Prep. of Final Drawings & BOM</td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Receipt of Material</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Installation of PV Modules</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Module Interconnections</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Earthing & Connections</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Solar Cable Laying & Termination</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Installation of Inverters</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">DC Cable Laying</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">AC Cable Laying & Terminations</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Communication Cable & Data</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Quality Checking</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Pre-Commissioning Tests</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar on"></div></td><td class="cell"><div class="gbar "></div></td></tr>
+<tr><td class="act">Inspection from Govt Bodies</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td></tr>
+<tr><td class="act">Final Commissioning</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td></tr>
+<tr><td class="act">Observation for Performance</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td></tr>
+<tr><td class="act">Completion & Handover</td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar "></div></td><td class="cell phase-divider"><div class="gbar "></div></td><td class="cell"><div class="gbar on"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 06 — WARRANTY (FIXED) ═══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">06 —</span> <span class="sec-num-text">WARRANTY</span></div>
+      <h2 class="sec-heading">Backed long after handover.</h2>
+      <p>Manufacturing defect and performance warranty by component.</p>
+    </div>
+    <div class="warranty-grid">
+      <div class="warranty-card">
+        <div class="wc-top"><h4>Solar Modules</h4><span class="wc-years">30 yrs</span></div>
+        <p>Product warranty against manufacturing defect and poor workmanship. Performance warranty: 90% rated output at year 10, 80% at year 30.</p>
+      </div>
+      <div class="warranty-card">
+        <div class="wc-top"><h4>Inverter</h4><span class="wc-years">5 + 25 yrs</span></div>
+        <p>Standard 5-year manufacturer warranty, extendable up to 25 years.</p>
+      </div>
+      <div class="warranty-card">
+        <div class="wc-top"><h4>Mounting Structure</h4><span class="wc-years">25 yrs</span></div>
+        <p>Structural warranty covering the full module mounting system.</p>
+      </div>
+      <div class="warranty-card">
+        <div class="wc-top"><h4>Other BOS</h4><span class="wc-years">As per OEM</span></div>
+        <p>Balance-of-system components covered as per original equipment manufacturer terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 07 — COMMERCIAL OFFER (DYNAMIC) ═══════════════════ -->
+<section id="commercial" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">07 —</span> <span class="sec-num-text">COMMERCIAL OFFER</span></div>
+      <h2 class="sec-heading">The investment, itemised.</h2>
+      <p>Full bill of quantities for the turnkey system.</p>
+    </div>
+    <div class="commercial-table-wrap">
+      <table class="commercial-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Specification</th>
+            <th class="num">Qty</th>
+            <th class="num">Per Watt</th>
+            <th class="num">Unit Price</th>
+            <th class="num">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+        <td>Solar Module</td>
+        <td>620 Wp Future</td>
+        <td class="num">20,161</td>
+        <td class="num">₹14.25</td>
+        <td class="num">₹8,835.00</td>
+        <td class="num">₹17,81,22,435.00</td>
+      </tr>
+<tr>
+        <td>Inverter</td>
+        <td>320 KVA Sungrow</td>
+        <td class="num">34</td>
+        <td class="num">₹1.21</td>
+        <td class="num">₹4,45,000.00</td>
+        <td class="num">₹1,51,30,000.00</td>
+      </tr>
+<tr>
+        <td>Structure</td>
+        <td>HDGI Column & Galvanum Rafter</td>
+        <td class="num">200</td>
+        <td class="num">₹1.68</td>
+        <td class="num">₹1,05,000.00</td>
+        <td class="num">₹2,10,00,000.00</td>
+      </tr>
+<tr>
+        <td>Cable AC</td>
+        <td>300SQMM Armoured, 11KV HT</td>
+        <td class="num">6,800</td>
+        <td class="num">₹0.82</td>
+        <td class="num">₹1,500.00</td>
+        <td class="num">₹1,02,00,000.00</td>
+      </tr>
+<tr>
+        <td>Cable DC</td>
+        <td>4 Sq.mm copper, EN type</td>
+        <td class="num">52,075</td>
+        <td class="num">₹0.23</td>
+        <td class="num">₹56.00</td>
+        <td class="num">₹29,16,200.00</td>
+      </tr>
+<tr>
+        <td>BOS</td>
+        <td>HDPE pipe, connectors, LA, earthing</td>
+        <td class="num">1</td>
+        <td class="num">₹0.40</td>
+        <td class="num">₹50,00,000.00</td>
+        <td class="num">₹50,00,000.00</td>
+      </tr>
+<tr>
+        <td>ACDB (LT Panel)</td>
+        <td>7 IN 2 OUT, L&T</td>
+        <td class="num">1</td>
+        <td class="num">₹0.32</td>
+        <td class="num">₹40,00,000.00</td>
+        <td class="num">₹40,00,000.00</td>
+      </tr>
+<tr>
+        <td>Transformer</td>
+        <td>33/0.8KV, 10000 KVA</td>
+        <td class="num">1</td>
+        <td class="num">₹1.04</td>
+        <td class="num">₹1,30,00,000.00</td>
+        <td class="num">₹1,30,00,000.00</td>
+      </tr>
+<tr>
+        <td>HT Panel</td>
+        <td>33KV, ABB Panel</td>
+        <td class="num">1</td>
+        <td class="num">₹0.16</td>
+        <td class="num">₹20,00,000.00</td>
+        <td class="num">₹20,00,000.00</td>
+      </tr>
+<tr>
+        <td>GSS Meter</td>
+        <td>3× ABT Meter 150 + metering eqpt.</td>
+        <td class="num">1</td>
+        <td class="num">₹0.11</td>
+        <td class="num">₹13,50,000.00</td>
+        <td class="num">₹13,50,000.00</td>
+      </tr>
+<tr>
+        <td>Transmission Line</td>
+        <td>33 KV</td>
+        <td class="num">3</td>
+        <td class="num">₹0.36</td>
+        <td class="num">₹15,00,000.00</td>
+        <td class="num">₹45,00,000.00</td>
+      </tr>
+<tr>
+        <td>GSS Injection Bay</td>
+        <td>33 KV</td>
+        <td class="num">1</td>
+        <td class="num">₹0.08</td>
+        <td class="num">₹10,00,000.00</td>
+        <td class="num">₹10,00,000.00</td>
+      </tr>
+<tr>
+        <td>I&C incl. Civil</td>
+        <td>12,500 KW installation & commissioning</td>
+        <td class="num">1</td>
+        <td class="num">₹1.02</td>
+        <td class="num">₹1,28,00,000.00</td>
+        <td class="num">₹1,28,00,000.00</td>
+      </tr>
+<tr>
+        <td>EPCM</td>
+        <td>12,500 KW</td>
+        <td class="num">1</td>
+        <td class="num">₹0.72</td>
+        <td class="num">₹90,00,000.00</td>
+        <td class="num">₹90,00,000.00</td>
+      </tr>
+<tr>
+        <td>Fencing</td>
+        <td>Chain fencing, 10ft/mtr</td>
+        <td class="num">3,000</td>
+        <td class="num">₹0.24</td>
+        <td class="num">₹1,000.00</td>
+        <td class="num">₹30,00,000.00</td>
+      </tr>
+<tr>
+        <td>Control Room</td>
+        <td>SCADA, CCTV, lighting</td>
+        <td class="num">1</td>
+        <td class="num">₹0.26</td>
+        <td class="num">₹33,00,000.00</td>
+        <td class="num">₹33,00,000.00</td>
+      </tr>
+          <tr class="sum"><td colspan="5">Total</td><td class="num">₹28,63,18,635.00</td></tr>
+          <tr class="sum"><td colspan="5">GST @ 8.9%</td><td class="num">₹2,54,82,358.52</td></tr>
+          <tr class="grand"><td colspan="5">Grand Total</td><td class="num">₹31,18,00,993.52</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="total-banner">
+      <div>
+        <div class="tb-label">Grand Total (incl. 8.9% GST)</div>
+        <div class="tb-value">₹31,18,00,993.52</div>
+        <div class="tb-sub">Effective ₹24.94 per watt across the full system</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="tb-label">Base value</div>
+        <div style="font-family:'Space Grotesk'; font-size:18px; font-weight:700;">₹28,63,18,635.00</div>
+        <div class="tb-sub">GST @ 8.9% — ₹2,54,82,358.52</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 08 — EXECUTION METHODOLOGY ═══════════════════ -->
+<section id="execution">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">08 —</span> <span class="sec-num-text">EXECUTION METHODOLOGY</span></div>
+      <h2 class="sec-heading">Project Execution Methodology</h2>
+      <p>A 20-step end-to-end delivery process across 4 phases — refined over 150+ commissioned solar projects.</p>
+    </div>
+    <div class="phase-img-wrap">
+      <img
+        src="https://asa-epc.com/phase.png"
+        alt="Project Execution Methodology — 4 phases, 20 steps"
+        class="phase-img"
+      />
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ 09 — ASA SERVICES ═══════════════════ -->
+<section id="asa-services" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">09 —</span> <span class="sec-num-text">OUR SERVICES</span></div>
+      <h2 class="sec-heading">ASA Is Driving Growth And Adoption In The Renewable Energy Sector.</h2>
+      <p>From solar modules and EPC services to hydrogen energy and financial solutions — a complete renewable energy ecosystem.</p>
+    </div>
+
+    <div class="services-img-wrap reveal">
+      <!-- Screen-only: service.png (hidden in PDF) -->
+      <img
+        src="https://asa-epc.com/service.png"
+        alt="ASA EPC Services — Solar Module, EPC Service, Rooftop Solar, Floating Solar, Grid/Off-Grid Inverters, Water Pumps, Energy Storage, Thermal Solar Power Plant, Hydrogen Energy, Solar Cables, Solar Partners, Financial Services"
+        class="services-full-img screen-only"
+      />
+      <!-- PDF-only: services-pdf.png (hidden on screen) -->
+      <img
+        src="https://asa-epc.com/services-pdf.png"
+        alt="ASA EPC Services"
+        class="services-full-img print-only"
+      />
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ 10 — TRACK RECORD (FIXED) ═══════════════════ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-num"><span class="sec-num-lbl">10 —</span> <span class="sec-num-text">TRACK RECORD</span></div>
+      <h2 class="sec-heading">Trusted by 200+ customers.</h2>
+    </div>
+    <div class="client-strip">
+      <span class="client-chip">Bajaj</span>
+      <span class="client-chip">L&amp;T Construction</span>
+      <span class="client-chip">Shyam Steel</span>
+      <span class="client-chip">Envisol</span>
+      <span class="client-chip">Novus Green</span>
+      <span class="client-chip">Shakti Pumping Life</span>
+      <span class="client-chip">Waaree</span>
+      <span class="client-chip">Bhawani</span>
+      <span class="client-chip">Disha Interio</span>
+      <span class="client-chip">KEC International</span>
+      <span class="client-chip">CVRU</span>
+      <span class="client-chip">Monte Carlo</span>
+    </div>
+    <div class="proj-grid" style="margin-top:32px;">
+
+      <div class="proj-card proj-card-photo">
+        <img src="https://asa-epc.com/jhiganpur.png" alt="Jhiganpur 2 MW Solar Project" class="proj-photo" />
+        <div class="proj-overlay">
+          <div class="pc-mw">2 MW</div>
+          <div class="pc-loc">Jhiganpur</div>
+          <div class="pc-tag">Ground-Mounted EPC</div>
+        </div>
+      </div>
+
+      <div class="proj-card proj-card-photo">
+        <img src="https://asa-epc.com/khurai.png" alt="Khurai 2 MW Solar Project" class="proj-photo" />
+        <div class="proj-overlay">
+          <div class="pc-mw">2 MW</div>
+          <div class="pc-loc">Khurai</div>
+          <div class="pc-tag">Ground-Mounted EPC</div>
+        </div>
+      </div>
+
+      <div class="proj-card proj-card-photo">
+        <img src="https://asa-epc.com/raisen.png" alt="Raisen 2 MW Solar Project" class="proj-photo" />
+        <div class="proj-overlay">
+          <div class="pc-mw">2 MW</div>
+          <div class="pc-loc">Raisen</div>
+          <div class="pc-tag">Ground-Mounted EPC</div>
+        </div>
+      </div>
+
+      <div class="proj-card proj-card-photo">
+        <img src="https://asa-epc.com/guna.png" alt="Guna 6 MW Solar Project" class="proj-photo" />
+        <div class="proj-overlay">
+          <div class="pc-mw">6 MW</div>
+          <div class="pc-loc">Guna</div>
+          <div class="pc-tag">Ground-Mounted EPC</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER (FIXED) ═══════════════════ -->
+<footer class="closing">
+  <div class="wrap closing-grid">
+    <div>
+      <img src="https://asa-epc.com/logos/asa-epc-logo.png" alt="ASA EPC Pvt. Ltd." class="footer-logo">
+      <p>One-stop solar solutions — EPC &amp; power transmission, energy storage, and energy trading. Franchise partner of Waaree Solar.</p>
+    </div>
+    <div>
+      <div class="closing-col-label">Registered Office</div>
+      <p>Office B-22, C Sector, Indrapuri,<br>near Syndicate Bank BHEL,<br>Bhopal, Madhya Pradesh, India</p>
+      <p style="margin-top:10px;">+91 75549 20666</p>
+    </div>
+    <div>
+      <div class="closing-col-label">Contact &amp; Legal</div>
+      <p><a href="mailto:ashutosh@asa-epc.com">ashutosh@asa-epc.com</a></p>
+      <p><a href="mailto:pushpraj@asa-epc.com">pushpraj@asa-epc.com</a></p>
+      <p style="margin-top:10px;">CIN U31905MP2018PTC04527<br>DPIIT No. DIPP19520</p>
+    </div>
+  </div>
+  <div class="wrap closing-bottom">
+    <span>Quotation valid for 30 days from offer date.</span>
+    <span>asa-epc.com · asasolar.in</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════ ACCEPT BAR (DYNAMIC TOTAL) ═══════════════════ -->
+<div class="accept-bar">
+  <div class="ab-left">Grand Total <strong>₹31,18,00,993.52</strong></div>
+  <button class="ab-btn" onclick="safePrint()">Download / Print</button>
+</div>
+
+<script>
+// ── 1. Immediately remove the reveal class from ALL elements so that
+//       opacity:0 never causes blank pages, especially on mobile browsers.
+//       We only animate when the user is actually scrolling (not on print).
+document.querySelectorAll('section').forEach(function(el) {
+  el.classList.add('reveal');
+});
+
+// ── 2. Intersection Observer for scroll animation (screen only)
+if (typeof IntersectionObserver !== 'undefined') {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+}
+
+// ── 3. Force ALL elements visible before any print event fires
+function makeAllVisible() {
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    el.classList.add('is-visible');
+  });
+}
+
+// ── 4. Wait for every <img> to fully load before triggering print.
+//       This prevents blank image boxes on mobile (Safari/Chrome Android).
+function waitForImages(callback) {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('img'));
+  if (!imgs.length) { callback(); return; }
+  var loaded = 0;
+  var total = imgs.length;
+  function onLoad() {
+    loaded++;
+    if (loaded >= total) callback();
+  }
+  imgs.forEach(function(img) {
+    if (img.complete && img.naturalWidth > 0) {
+      onLoad();
+    } else {
+      img.addEventListener('load', onLoad);
+      img.addEventListener('error', onLoad); // don't hang on broken images
+    }
+  });
+}
+
+// ── 5. iOS & Mobile detection
+var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+var isMobile = /iphone|ipad|ipod|android|blackberry|mini|windowssce|palm/i.test(navigator.userAgent);
+if (isMobile) {
+  document.body.classList.add('mobile-device');
+}
+
+// ── 6. Public print function
+function safePrint() {
+  makeAllVisible();
+  waitForImages(function() {
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        window.print();
+      });
+    });
+  });
+}
+
+// ── 6. Also handle Ctrl+P / native print shortcut
+window.addEventListener('beforeprint', makeAllVisible);
+
+// ── Hamburger menu toggle logic
+var hamburger = document.getElementById('hamburger-btn');
+var navLinks = document.getElementById('nav-links');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('show');
+  });
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('show');
+    });
+  });
+}
+
+// matchMedia-based print detection (non-deprecated, supports mobile)
+if (window.matchMedia) {
+  var mql = window.matchMedia('print');
+  var handler = function(mq) {
+    if (mq.matches) makeAllVisible();
+  };
+  if (mql.addEventListener) {
+    mql.addEventListener('change', handler);
+  } else if (mql.addListener) {
+    mql.addListener(handler); // Safari < 14 fallback
+  }
+}
+</script>
+
+
+
+</body>
+</html>
